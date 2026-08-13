@@ -174,10 +174,11 @@ function drawHeatmap(containerId, opts) {
   const rowLabels = opts.rowLabels;
   const colLabels = opts.colLabels;
   const values = opts.values; // [row][col]
-  const margin = { top: 8, right: 8, bottom: 40, left: 96 };
+  const margin = { top: 8, right: 8, bottom: 40, left: 84 };
   const cellGap = 2;
-  const gridW = width - margin.left - margin.right;
-  const cellSize = gridW / colLabels.length;
+  const gridWMax = width - margin.left - margin.right;
+  const cellSize = Math.min(72, gridWMax / colLabels.length);
+  const gridW = cellSize * colLabels.length;
   const gridH = cellSize * rowLabels.length;
   const height = gridH + margin.top + margin.bottom;
 
