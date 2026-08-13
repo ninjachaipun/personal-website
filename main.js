@@ -174,7 +174,13 @@ function drawHeatmap(containerId, opts) {
   const rowLabels = opts.rowLabels;
   const colLabels = opts.colLabels;
   const values = opts.values; // [row][col]
-  const margin = { top: 8, right: 8, bottom: 40, left: 84 };
+  const rowMetricLabel = opts.rowMetricLabel || 'Exit Cap';
+  const colMetricLabel = opts.colMetricLabel || 'Rent Growth';
+  const metricLabel = opts.metricLabel || 'Levered IRR';
+  const colCaption = opts.colCaption || 'Rental Growth Rate →';
+  const formatValue = opts.formatValue || ((v) => (v * 100).toFixed(1) + '%');
+  const formatCellLabel = opts.formatCellLabel || formatValue;
+  const margin = { top: 8, right: 8, bottom: 40, left: opts.leftMargin || 84 };
   const cellGap = 2;
   const gridWMax = width - margin.left - margin.right;
   const cellSize = Math.min(72, gridWMax / colLabels.length);
@@ -209,7 +215,7 @@ function drawHeatmap(containerId, opts) {
       rect.addEventListener('mouseenter', () => {
         const cx = margin.left + ci * cellSize + cellSize / 2;
         const cy = margin.top + ri * cellSize;
-        tooltip.show(cx, cy, `Exit Cap ${rl}, Rent Growth ${cl}<br><strong>Levered IRR: ${(v * 100).toFixed(1)}%</strong>`);
+        tooltip.show(cx, cy, `${rowMetricLabel} ${rl}, ${colMetricLabel} ${cl}<br><strong>${metricLabel}: ${formatValue(v)}</strong>`);
       });
       rect.addEventListener('mouseleave', () => tooltip.hide());
       g.appendChild(rect);
@@ -220,7 +226,7 @@ function drawHeatmap(containerId, opts) {
         class: 'value-label', 'text-anchor': 'middle',
         style: `fill:${t > 0.55 ? '#ffffff' : '#16181c'}`, 'font-weight': '600'
       });
-      label.textContent = (v * 100).toFixed(1) + '%';
+      label.textContent = formatCellLabel(v);
       g.appendChild(label);
     });
   });
@@ -232,7 +238,7 @@ function drawHeatmap(containerId, opts) {
   });
 
   const axisCaptionX = svgEl('text', { x: gridW / 2, y: gridH + 36, class: 'axis-label', 'text-anchor': 'middle', 'font-weight': '700' });
-  axisCaptionX.textContent = 'Rental Growth Rate →';
+  axisCaptionX.textContent = colCaption;
   g.appendChild(axisCaptionX);
 
   container.appendChild(svg);

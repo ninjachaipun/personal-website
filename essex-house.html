@@ -163,13 +163,20 @@
   <div class="wrap">
     <div class="section-head">
       <div class="section-kicker">Return Drivers</div>
-      <h2>Two-Way IRR Sensitivity</h2>
-      <p class="lead">Levered IRR tested against rental growth rate and exit capitalization rate to identify key value drivers and evaluate downside risk.</p>
+      <h2>Two-Way Sensitivity Analysis</h2>
+      <p class="lead">Levered IRR and levered NPV each stress-tested against their key value drivers — rental growth and exit cap rate for IRR, discount rate and exit cap rate for NPV — to identify downside risk and upside potential.</p>
     </div>
-    <div class="chart-card">
-      <div class="chart-title">Levered IRR Sensitivity</div>
-      <div class="chart-subtitle">Rows: exit cap rate &middot; Columns: rental growth rate</div>
-      <div id="chart-heatmap" class="chart-wrap"></div>
+    <div class="grid-2">
+      <div class="chart-card">
+        <div class="chart-title">Levered IRR Sensitivity</div>
+        <div class="chart-subtitle">Rows: exit cap rate &middot; Columns: rental growth rate</div>
+        <div id="chart-heatmap" class="chart-wrap"></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Levered NPV Sensitivity</div>
+        <div class="chart-subtitle">Rows: exit cap rate &middot; Columns: discount rate</div>
+        <div id="chart-heatmap-npv" class="chart-wrap"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -295,6 +302,24 @@
       [0.1237, 0.1333, 0.1426, 0.1517, 0.1605],
       [0.1182, 0.1279, 0.1374, 0.1466, 0.1556],
       [0.1133, 0.1232, 0.1328, 0.1421, 0.1513]
+    ]
+  });
+
+  drawHeatmap('chart-heatmap-npv', {
+    rowLabels: ['3.00%', '3.50%', '4.00%', '4.50%', '5.00%'],
+    colLabels: ['6.00%', '6.50%', '7.00%', '7.50%', '8.00%'],
+    rowMetricLabel: 'Exit Cap',
+    colMetricLabel: 'Discount Rate',
+    metricLabel: 'Levered NPV',
+    colCaption: 'Discount Rate →',
+    formatValue: (v) => fmtMoney(v, {decimals: 1}),
+    formatCellLabel: (v) => fmtMoney(v, {decimals: 0}),
+    values: [
+      [26041730.70, 23281554.00, 20771829.57, 18488532.52, 16410051.97],
+      [22129114.52, 19719192.59, 17526943.30, 15531541.72, 13714251.76],
+      [19194652.38, 17047421.53, 15093278.60, 13313798.63, 11692401.60],
+      [16912292.94, 14969377.37, 13200428.28, 11588887.33, 10119851.48],
+      [15086405.39, 13306942.04, 11686148.02, 10208958.29, 8861811.38]
     ]
   });
 
