@@ -312,8 +312,8 @@
     colMetricLabel: 'Discount Rate',
     metricLabel: 'Levered NPV',
     colCaption: 'Discount Rate →',
-    formatValue: (v) => fmtMoney(v, {decimals: 1}),
-    formatCellLabel: (v) => fmtMoney(v, {decimals: 0}),
+    formatValue: (v) => '$' + (v / 1e6).toFixed(2) + 'M',
+    formatCellLabel: (v) => (v / 1e6).toFixed(2) + 'M',
     values: [
       [26041730.70, 23281554.00, 20771829.57, 18488532.52, 16410051.97],
       [22129114.52, 19719192.59, 17526943.30, 15531541.72, 13714251.76],

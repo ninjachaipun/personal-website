@@ -221,12 +221,15 @@ function drawHeatmap(containerId, opts) {
       g.appendChild(rect);
 
       // direct label on darker cells only if contrast requires — always show value, light text on dark, dark text on light
+      const labelText = formatCellLabel(v);
+      // shrink font for longer labels so they never overflow the cell, especially on narrow/mobile widths
+      const labelFontSize = labelText.length >= 6 ? Math.min(11, cellSize * 0.155) : Math.min(11, cellSize * 0.175);
       const label = svgEl('text', {
         x: ci * cellSize + cellSize / 2, y: ri * cellSize + cellSize / 2 + 4,
         class: 'value-label', 'text-anchor': 'middle',
-        style: `fill:${t > 0.55 ? '#ffffff' : '#16181c'}`, 'font-weight': '600'
+        style: `fill:${t > 0.55 ? '#ffffff' : '#16181c'}; font-size:${labelFontSize}px`, 'font-weight': '600'
       });
-      label.textContent = formatCellLabel(v);
+      label.textContent = labelText;
       g.appendChild(label);
     });
   });
