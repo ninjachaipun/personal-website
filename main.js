@@ -259,7 +259,7 @@ function drawBarChart(containerId, opts) {
 
   const width = container.clientWidth || 560;
   const rowH = 42;
-  const margin = { top: 8, right: 70, bottom: 8, left: 130 };
+  const margin = { top: 8, right: 92, bottom: 8, left: 130 };
   const barAreaW = width - margin.left - margin.right;
   const height = opts.data.length * rowH + margin.top + margin.bottom;
 

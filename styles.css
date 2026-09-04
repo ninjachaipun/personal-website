@@ -258,6 +258,23 @@ section { padding: 72px 0; }
   letter-spacing: 0.04em;
 }
 
+/* Headline return metrics (levered IRR / equity multiple / NPV) — set apart from supporting stats */
+.kpi-tile-primary {
+  background: rgba(176,141,87,0.09);
+  border: 1.5px solid var(--bronze);
+  position: relative;
+}
+.kpi-tile-primary::before {
+  content: "";
+  position: absolute;
+  top: -1.5px; left: -1.5px; right: -1.5px;
+  height: 4px;
+  border-radius: var(--radius-m) var(--radius-m) 0 0;
+  background: var(--bronze);
+}
+.kpi-tile-primary .kpi-value { font-size: 1.75rem; color: var(--bronze-dark); }
+.kpi-tile-primary .kpi-label { color: var(--bronze-dark); font-weight: 600; }
+
 /* ---------- Project preview card (home page) ---------- */
 .project-card {
   display: grid;
@@ -497,7 +514,7 @@ section { padding: 72px 0; }
 }
 .dynamism-banner h3 { color: #fff; font-size: 1.3rem; margin-bottom: 8px; }
 .dynamism-banner p { color: rgba(255,255,255,0.78); margin: 0; font-size: 0.96rem; }
-.dynamism-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.dynamism-facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
 .dynamism-fact { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-m); padding: 16px; text-align: center; }
 .dynamism-fact-value { font-size: 1.3rem; font-weight: 700; color: #fff; }
 .dynamism-fact-label { font-size: 0.72rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 4px; }
@@ -619,7 +636,6 @@ section { padding: 72px 0; }
   .about-photo { max-width: 280px; }
   .why-grid { grid-template-columns: 1fr; }
   .dynamism-banner { grid-template-columns: 1fr; }
-  .dynamism-facts { grid-template-columns: repeat(3, 1fr); }
   .plc-inner { grid-template-columns: 1fr; }
   .plc-stats { text-align: left; gap: 20px; }
   .assumption-grid { grid-template-columns: 1fr; }
@@ -630,5 +646,4 @@ section { padding: 72px 0; }
   .nav-cta { padding: 8px 12px; font-size: 0.8rem; }
   .nav-cta-full { display: none; }
   .nav-cta-short { display: inline; }
-  .dynamism-facts { grid-template-columns: 1fr 1fr; }
 }
