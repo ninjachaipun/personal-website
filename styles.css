@@ -647,3 +647,37 @@ section { padding: 72px 0; }
   .nav-cta-full { display: none; }
   .nav-cta-short { display: inline; }
 }
+
+/* ---------- Key considerations (heading left, text right) ---------- */
+.kc-list { display: flex; flex-direction: column; }
+.kc-item { display: grid; grid-template-columns: 220px 1fr; gap: 28px; padding: 24px 0; border-top: 1px solid var(--border); }
+.kc-item:first-child { border-top: none; padding-top: 4px; }
+.kc-item:last-child { padding-bottom: 4px; }
+.kc-item h3 { font-size: 1.05rem; margin: 0; color: var(--navy-900); line-height: 1.35; }
+.kc-item p { color: var(--ink-secondary); font-size: 0.95rem; line-height: 1.7; }
+.kc-item p:last-child { margin-bottom: 0; }
+
+.verdict-card { margin-top: 24px; border-left: 4px solid var(--bronze); background: rgba(176,141,87,0.06); }
+.verdict-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-bottom: 16px; }
+.verdict-head h3 { margin: 0; font-size: 1.25rem; }
+.verdict-pill { display: inline-block; padding: 5px 12px; border-radius: 999px; background: #fbe9e4; color: #a3341a; font-family: system-ui, sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.02em; }
+.verdict-card p { color: var(--ink-secondary); line-height: 1.75; }
+.verdict-card p:last-child { margin-bottom: 0; }
+
+/* ---------- Compact comparison table ---------- */
+.compare-table { width: 100%; border-collapse: collapse; font-size: 0.94rem; }
+.compare-table th { text-align: right; font-family: system-ui, sans-serif; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-muted); font-weight: 600; padding: 0 0 10px 12px; }
+.compare-table th:first-child { text-align: left; padding-left: 0; }
+.compare-table td { padding: 11px 0 11px 12px; border-top: 1px solid var(--border); text-align: right; color: var(--navy-900); font-weight: 600; font-variant-numeric: tabular-nums; }
+.compare-table td:first-child { text-align: left; padding-left: 0; color: var(--ink-muted); font-weight: 400; }
+.compare-table .neg { color: #a3341a; }
+.compare-table .pos { color: var(--success-text); }
+.compare-table tr.total td { border-top: 1px solid var(--border-strong); }
+.overview-table td.neg { color: #a3341a; }
+
+@media (max-width: 860px) {
+  .kc-item { grid-template-columns: 1fr; gap: 8px; }
+}
+
+/* grid children may shrink below their content so wide charts scroll inside their card */
+.grid-2 > *, .grid-3 > * { min-width: 0; }

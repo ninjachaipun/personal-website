@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2480 Dundas St W | Punnakorn Chaiphanichapun</title>
-<meta name="description" content="Multi-family acquisition underwriting model for 2480 Dundas St W, 14 live/work loft studios in High Park North, Toronto — built by Punnakorn Chaiphanichapun.">
+<meta name="description" content="Value-add acquisition model for 2480 Dundas St W, a 14-suite live/work loft building in High Park North, Toronto: renovation plan, bridge-to-permanent refinance, 10-year hold. Built by Punnakorn Chaiphanichapun.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2718%27 fill=%27%230b1f3a%27/%3E%3Ctext x=%2750%27 y=%2766%27 font-size=%2758%27 font-family=%27Georgia,serif%27 fill=%27%23fff%27 text-anchor=%27middle%27%3EP%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -32,13 +32,13 @@
     </div>
     <h1>2480 Dundas St W</h1>
     <p class="hero-sub">
-      A 14-suite live/work loft building in High Park North, Toronto, underwritten from a public sale
-      brochure &mdash; a documented unit-level rent roll, a full debt amortization schedule, and a
-      finer-grained two-way sensitivity analysis.
+      A 14-suite live/work loft building in High Park North, Toronto, underwritten as a value-add
+      deal: an 8-month renovation, a bridge loan refinanced into a permanent loan at Month 18,
+      and a 10-year hold.
     </p>
     <div class="btn-row">
-      <a class="btn btn-primary" href="Dundas_St_W_Acquisition_Model.xlsm" download>Download Full Model (.xlsm)</a>
-      <a class="btn btn-outline" href="#assumptions">Jump to Assumptions</a>
+      <a class="btn btn-primary" href="2480_Dundas_St_W_v4.xlsm" download>Download Full Model (.xlsm)</a>
+      <a class="btn btn-outline" href="#considerations">Key Considerations</a>
     </div>
   </div>
 </header>
@@ -48,15 +48,15 @@
   <div class="wrap">
     <div class="kpi-row">
       <div class="kpi-tile kpi-tile-primary">
-        <div class="kpi-value">7.4%</div>
+        <div class="kpi-value">8.7%</div>
         <div class="kpi-label">Levered IRR</div>
       </div>
       <div class="kpi-tile kpi-tile-primary">
-        <div class="kpi-value">3.0x</div>
+        <div class="kpi-value">2.03x</div>
         <div class="kpi-label">Levered Equity Multiple</div>
       </div>
       <div class="kpi-tile kpi-tile-primary">
-        <div class="kpi-value">$169K</div>
+        <div class="kpi-value">&minus;$254K</div>
         <div class="kpi-label">Levered NPV</div>
       </div>
       <div class="kpi-tile">
@@ -68,7 +68,7 @@
         <div class="kpi-label">Purchase Price</div>
       </div>
       <div class="kpi-tile">
-        <div class="kpi-value">15 yrs</div>
+        <div class="kpi-value">10 yrs</div>
         <div class="kpi-label">Hold Period</div>
       </div>
     </div>
@@ -80,214 +80,289 @@
   <div class="wrap grid-2">
     <div>
       <div class="section-kicker">Property Overview</div>
-      <h2 class="mt-0">2480 Dundas St W</h2>
+      <h2 class="mt-0">The Building</h2>
       <table class="overview-table">
         <tr><td>Address</td><td>2480 Dundas St W, High Park North, Toronto, ON M6P 1W9</td></tr>
-        <tr><td>Property Type</td><td>Live/work loft studios &middot; industrial-zoned, mixed-use in practice</td></tr>
-        <tr><td>Suites</td><td>14 total</td></tr>
-        <tr><td>Unit Mix</td><td>5 Studio &mdash; Small &middot; 5 Studio &mdash; Mid &middot; 4 Studio &mdash; Large</td></tr>
-        <tr><td>Year Built</td><td>1918</td></tr>
-        <tr><td>Building Age</td><td>108 years</td></tr>
-        <tr><td>Total Building Sq. Ft.</td><td>11,937 sq. ft.</td></tr>
-        <tr><td>Site Area</td><td>0.12 acres</td></tr>
-        <tr><td>Leasable Area (GLA)</td><td>10,756 sq. ft.</td></tr>
-        <tr><td>Year 1 NOI</td><td>$368,120 (seller pro forma)</td></tr>
-        <tr><td>Other Income</td><td>Rooftop signage, 1 spot &middot; $500/mo</td></tr>
+        <tr><td>Property Type</td><td>Multifamily live/work lofts &middot; zoned Industrial Commercial (IC)</td></tr>
+        <tr><td>Units</td><td>14 studios &middot; 5 Small, 5 Mid, 4 Large</td></tr>
+        <tr><td>Year Built</td><td>1918 (108 years at purchase)</td></tr>
+        <tr><td>Rentable Area</td><td>10,651 sq. ft.</td></tr>
+        <tr><td>Total Building Area</td><td>11,937 sq. ft.</td></tr>
+        <tr><td>Leases</td><td>All 14 month-to-month</td></tr>
+        <tr><td>Other Income</td><td>Rooftop sign &middot; $500/mo</td></tr>
+        <tr><td>Current NOI</td><td>$368,120 (brochure)</td></tr>
+        <tr><td>Going-in Cap Rate</td><td>6.15%</td></tr>
       </table>
       <div class="source-note" style="margin-top:20px;">
         <span>&#9432;</span>
-        <span><strong>Source:</strong> Property data sourced from the EXP Realty offering brochure (Aug 2026) and cross-checked against LoopNet Canada, which independently confirms year built (1918), year renovated (2016), lot size (0.12 acres), and total building square footage (11,937 sq. ft.). The source spreadsheet's own field for this last figure is labeled &ldquo;Total Site Area&rdquo; &mdash; that's a mislabel carried over from the model template; 11,937 sq. ft. is total building floor area, not lot size, and I've corrected the label here. This is an independent underwriting exercise and is not affiliated with the listing brokerage.</span>
+        <span><strong>Source:</strong> EXP Realty sale brochure (Aug 2026), cross-checked against LoopNet Canada. Independent exercise; not affiliated with the listing brokerage.</span>
       </div>
     </div>
     <div>
       <div class="card">
         <div class="section-kicker">Unit Mix</div>
         <div id="chart-units" class="chart-wrap"></div>
+        <p class="small" style="color:var(--ink-muted); margin:10px 0 0;">Hover a bar for average size and market rent.</p>
       </div>
       <div class="card" style="margin-top:20px;">
-        <div class="section-kicker">Potential Revenue Streams</div>
-        <div id="chart-revenue" class="chart-wrap"></div>
-        <p class="small" style="color:var(--ink-muted); margin-top:12px; margin-bottom:0;">Gross potential annual revenue by floor plan at current market rent, plus the rooftop signage lease &mdash; the one ancillary income stream this brochure actually itemizes.</p>
+        <div class="section-kicker">Rent Roll Snapshot</div>
+        <table class="compare-table">
+          <tr><th></th><th>In-Place</th><th>Market</th></tr>
+          <tr><td>Annual rent</td><td>$441,113</td><td>$433,140</td></tr>
+          <tr><td>Rent / sq. ft. / month</td><td>$3.45</td><td>$3.39</td></tr>
+          <tr class="total"><td>Rental upside</td><td></td><td class="neg">&minus;1.8%</td></tr>
+        </table>
+        <p class="small" style="color:var(--ink-muted); margin:12px 0 0;">Post-renovation market rent with the 7% premium: $3.63 / sq. ft. / month.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Key Considerations & Conclusion -->
-<section class="section-alt">
+<section id="considerations" class="section-alt">
   <div class="wrap">
     <div class="section-head">
       <div class="section-kicker">Underwriting Judgment</div>
-      <h2>Key Considerations &amp; Conclusion</h2>
-      <p class="lead">2480 Dundas comes with a documented rent roll and 100% occupancy, but the 6.15% purchase cap rate is high for a stabilized multi-family asset &mdash; and the reason why comes down to zoning, in-place rents that are already above market, and a debt structure that doesn't leave much room to be wrong.</p>
+      <h2>Key Considerations</h2>
     </div>
-    <div class="card">
-      <ul class="small text-muted" style="margin:0; padding-left:20px; line-height:1.75;">
-        <li style="margin-bottom:14px;"><strong style="color:var(--ink-secondary);">Zoned Industrial Commercial, operated as residential:</strong> the property is classified IC, yet run today as a multi-residential live/work building. That flexible use has merit, but it's a real risk to any future sale or redevelopment &mdash; zoning restrictions could complicate both. This model assumes all 14 units stay residential.</li>
-        <li style="margin-bottom:14px;"><strong style="color:var(--ink-secondary);">A high cap rate that only makes sense two ways:</strong> at 6.15%, the purchase cap rate is well above the 4.0%&ndash;4.75% range typical for Toronto Class A/B multifamily &mdash; a real risk signal on a building this old with month-to-month tenancies and no confirmed capex reserve. But read against its actual IC zoning, that 6% number lines up with industrial cap rates in Colliers' Q2 2026 Toronto report. The exit cap rate in this model splits the difference: reduced from entry to reflect the renovations, but held with a premium for the zoning risk.</li>
-        <li style="margin-bottom:14px;"><strong style="color:var(--ink-secondary);">Current rents are above market, and MTM leases mean they won't stay there:</strong> the in-place rent roll runs slightly ahead of researched market rents, but because most units are month-to-month, turnover is fast &mdash; the model reverts revenue down to market rate by Month 7. Substantial NOI expansion from here is unlikely; if anything, the near-term move in income is down, not up.</li>
-        <li style="margin-bottom:14px;"><strong style="color:var(--ink-secondary);">Debt coverage is the real problem, and the usual fixes are already used up:</strong> DSCR runs below 1.0x in years 1 through 3 on this model. For the deal to work, the financing would need to be more favorable &mdash; but interest rate (5.5%), equity share (34% of purchase price), and amortization (25 years) are already about as good as this deal is likely to get. There isn't a lot of room left in any of those three levers.</li>
-        <li><strong style="color:var(--ink-secondary);">The seller's tax figure looks too low to trust:</strong> the brochure's claimed annual tax bill of roughly $17,350 is hard to square with a property listed near $6M. This model recalculates taxes from the assessment instead of taking that figure at face value &mdash; taxes are still modeled as monthly accruals rather than annual lump sums purely as a cash-flow-smoothing convention; the total annual burden is the same either way.</li>
-      </ul>
+    <div class="card kc-list">
+      <div class="kc-item">
+        <h3>Zoning</h3>
+        <div>
+          <p>2480 Dundas St W is classified as Industrial Commercial (IC), yet it is currently operated as a multi-residential live/work property. While this flexible use has merit, it creates potential issues for future redevelopment and could complicate the property's valuation. There is a risk that zoning restrictions may impose complications during any future sale or redevelopment. For this model, it is assumed all units will remain residential.</p>
+        </div>
+      </div>
+      <div class="kc-item">
+        <h3>High Purchase Cap Rate</h3>
+        <div>
+          <p>The purchase cap rate is slightly over 6%, significantly higher than the recommended 4.0% to 4.75% range for Toronto Class A and Class B multifamily properties. This elevated cap rate signals substantial risks the buyer assumes at purchase.</p>
+          <p>As a standalone multifamily investment, the property carries risk due to its age and the need for ongoing major capital expenditures despite recent renovations. Additionally, the zoning complexity presents a future obstacle if redevelopment becomes necessary. Compounding these concerns, most rents are on month-to-month (MTM) leases, creating vacancy and rental rate volatility.</p>
+          <p>However, when viewed as an industrial property aligned with its actual zoning, the 6% cap rate aligns perfectly with industrial property cap rates from the Q2 2026 Colliers Toronto Cap Rate Report. This interpretation reconciles the pricing with the building's Industrial Commercial classification.</p>
+          <p>The exit cap rate assumes multifamily property logic, reduced to reflect the substantial renovations, but with an additional premium applied for zoning risk.</p>
+        </div>
+      </div>
+      <div class="kc-item">
+        <h3>Revenue Adjustment</h3>
+        <div>
+          <p>Current in-place rents are above market rates. Because these rents are on MTM leases, fast tenant turnover is expected, and rents will decline to market rates quickly. However, due value-add renovations, the model believes a premium should be applied to the market prices for units. In-depth market research should conducted to ensure up to date market rates for units similar to those in this property.</p>
+        </div>
+      </div>
+      <div class="kc-item">
+        <h3>DSCR Concerns</h3>
+        <div>
+          <p>Due to the nature of the financing structure, the Debt-Service-Coverage is expected to be a non-issue. The first Bridge Loan will not require a minimum DSCR because the project is yet to be stabilized. Later in Year 2, or Month 18 of the project, when the property is stabilized the Bridge Loan is refinanced to a Permanent Loan. Upon that time, the DSCR is above the minimum of 1.25x for all years required by lenders.</p>
+          <p>The lowest DSCR is expected is 1.28x in the first year of operations, which is a slim cushion.</p>
+        </div>
+      </div>
+      <div class="kc-item">
+        <h3>Tax Payments</h3>
+        <div>
+          <p>Property taxes are modeled as monthly accruals rather than annual lump-sum payments. While taxes are paid annually in practice, this approach smooths monthly cash flows and minimizes reserve draws during high-tax months. The total tax burden remains unchanged; this is a cash management approach that enhances model clarity.</p>
+          <p>The tax estimate was recalculated from the sale brochure information. The seller's claimed tax payment of approximately $17,350 appears suspiciously low for a property with an asking price near $6 million.</p>
+        </div>
+      </div>
     </div>
-    <div class="card" style="margin-top:20px; border-left:4px solid var(--bronze); background:rgba(176,141,87,0.06);">
-      <h4 style="margin-top:0; color:var(--bronze-dark);">My Take</h4>
-      <p style="color:var(--ink-secondary); margin-bottom:0;">Because current rents sit above market on leases that can turn over quickly, I'd expect rental income to fall before it grows &mdash; and that fall, layered on a building that's going to keep needing capital at 108 years old, puts real pressure on NOI going forward. Using market-rate rents and a more honest tax estimate, I get to a Year 1 NOI of roughly $330K, which at the deal's own 6.15% cap rate implies a value closer to $5.3M &mdash; about 14% below the $6M ask. At that lower price, the projected levered NPV improves by roughly $800K and the levered IRR by about 2 points. As priced today, with rents likely to soften and financing already stretched thin on every lever, this reads as a weak investment at the asking price.</p>
+    <div class="card verdict-card">
+      <div class="verdict-head"><h3>Conclusion &amp; Decision:</h3><span class="verdict-pill">Poor Investment Opportunity</span></div>
+      <p>The brochure's disclosed taxes of about $17,000 look understated. They imply an assessed value of only $1.43M, about 24% of the asking price. A reassessment at purchase would raise taxes by about $37,000 a year and cut NOI from the stated $368,000 to about $331,000. At the quoted 6.15% cap rate, that NOI supports a value of about $5.38M, so the $5.99M asking price carries an 11% (~$601,000) premium.</p>
+      <p>The rent base adds risk. Nearly all leases are month-to-month, which makes renovation turnover easy but means the income is unstable over the long term. The value-add plan works only if renovated units can be re-leased on longer terms at a premium to market rents. Without renovations the outlook is worse: in-place rents are above market and falling, so turnover would push income down to market levels. The building's age (over 100 years) also means significant ongoing capital spending.</p>
+      <p>At the asking price, the deal returns a levered IRR of 8.7%, below the 10% discount rate, and a levered NPV of –$254,000. At the corrected price of $5.38M, IRR rises about 4 points to 12.8% and NPV improves by about $705,000, to +$463,000. Understated taxes, unstable above-market rents and a century-old building make this a poor investment at the current asking price.</p>
+      <p>This deal would be a more attractive opportunity with a lower acquisition price.</p>
     </div>
   </div>
 </section>
 
-<!-- Cash flow chart -->
+<!-- Sale Price Analysis -->
 <section>
   <div class="wrap">
     <div class="section-head">
-      <div class="section-kicker">Projected Performance</div>
-      <h2>Cash Flow Growth Through the Hold Period</h2>
-      <p class="lead">Annual unlevered and levered operating cash flow, years 1&ndash;14. Year 15 additionally includes exit sale proceeds of $9.87M (unlevered) / $7.24M (levered) at a 5.0% exit cap rate, omitted here to keep the operating trend readable.</p>
+      <div class="section-kicker">Sale Price Analysis</div>
+      <h2>What the Corrected NOI Is Worth</h2>
     </div>
-    <div class="chart-card">
-      <div class="chart-title">Annual Cash Flow</div>
-      <div class="chart-subtitle">Unlevered vs. levered, years 1&ndash;14 of the hold</div>
-      <div id="chart-cashflow" class="chart-wrap"></div>
-    </div>
-  </div>
-</section>
-
-<!-- Deal metrics + capital structure -->
-<section class="section-alt">
-  <div class="wrap grid-2">
-    <div>
-      <div class="section-kicker">Deal Metrics</div>
-      <h2 class="mt-0">Returns</h2>
-      <table class="overview-table">
-        <tr><td>Purchase Price</td><td>$5,985,000</td></tr>
-        <tr><td>Entry Cap Rate</td><td>6.15% (Year 1 NOI / Purchase Price, using brochure NOI)</td></tr>
-        <tr><td>Exit Cap Rate</td><td>5.00%</td></tr>
-        <tr><td>Unlevered IRR</td><td>7.6%</td></tr>
-        <tr><td>Levered IRR</td><td>7.4%</td></tr>
-        <tr><td>Unlevered Equity Multiple</td><td>2.2x</td></tr>
-        <tr><td>Levered Equity Multiple</td><td>3.0x</td></tr>
-        <tr><td>Unlevered NPV</td><td>$457,766</td></tr>
-        <tr><td>Levered NPV</td><td>$168,947</td></tr>
-        <tr><td>Hold Period</td><td>15 years</td></tr>
-      </table>
-    </div>
-    <div>
-      <div class="section-kicker">Capital Structure</div>
-      <h2 class="mt-0">Financing Sources</h2>
+    <div class="grid-3">
       <div class="card">
-        <div id="chart-capstack"></div>
-        <div class="chart-legend" style="margin-top:16px;">
-          <div class="legend-item"><span class="legend-swatch" style="background:var(--series-2);"></span>Debt &middot; $4.72M (65%) &middot; 5.5% interest, 25-yr amortization</div>
-        </div>
-        <div class="chart-legend">
-          <div class="legend-item"><span class="legend-swatch" style="background:var(--series-1);"></span>Equity &middot; $2.52M (35%)</div>
-        </div>
-        <table class="overview-table" style="margin-top:16px;">
-          <tr><td>Total Project Cost</td><td>$7,244,084</td></tr>
-          <tr><td>Loan Type</td><td>Fully amortized</td></tr>
+        <h4 class="mt-0" style="font-family:system-ui, sans-serif; text-transform:uppercase; font-size:0.82rem; letter-spacing:0.05em; color:var(--sky-dark);">NOI Correction</h4>
+        <table class="compare-table">
+          <tr><td>Brochure Stated NOI</td><td>$368,120</td></tr>
+          <tr><td>Tax Correction</td><td class="neg">&minus;$36,958</td></tr>
+          <tr class="total"><td>Corrected NOI</td><td>$331,162</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h4 class="mt-0" style="font-family:system-ui, sans-serif; text-transform:uppercase; font-size:0.82rem; letter-spacing:0.05em; color:var(--sky-dark);">Sale Price Correction</h4>
+        <table class="compare-table">
+          <tr><td>Implied Cap Rate</td><td>6.15%</td></tr>
+          <tr><td>Corrected Listing Price</td><td>$5,384,128</td></tr>
+          <tr><td>Original Listing Price</td><td>$5,985,000</td></tr>
+          <tr class="total"><td>Premium</td><td class="neg">$600,872 (11.2%)</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h4 class="mt-0" style="font-family:system-ui, sans-serif; text-transform:uppercase; font-size:0.82rem; letter-spacing:0.05em; color:var(--sky-dark);">Returns by Purchase Price</h4>
+        <table class="compare-table">
+          <tr><th></th><th>Asking</th><th>Corrected</th></tr>
+          <tr><td>Levered IRR</td><td>8.7%</td><td class="pos">12.8%</td></tr>
+          <tr><td>Equity Multiple</td><td>2.03x</td><td class="pos">2.48x</td></tr>
+          <tr><td>Levered NPV</td><td class="neg">&minus;$254K</td><td class="pos">+$463K</td></tr>
         </table>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Sensitivity heatmap -->
+<!-- NOI & DSCR -->
 <section class="section-alt">
   <div class="wrap">
     <div class="section-head">
-      <div class="section-kicker">Return Drivers</div>
-      <h2>Two-Way Sensitivity Analysis</h2>
-      <p class="lead">Levered IRR and levered NPV each stress-tested against their key value drivers &mdash; rental growth and exit cap rate for IRR, discount rate and exit cap rate for NPV &mdash; at a 0.25%-step grid.</p>
+      <div class="section-kicker">Projected Performance</div>
+      <h2>Annual NOI &amp; Debt Service Coverage</h2>
+      <p class="lead">Year 1 NOI is held down by the renovation period. The bridge loan is refinanced into a permanent loan at Month 18, and the property is sold at the end of Year 10.</p>
     </div>
     <div class="grid-2">
       <div class="chart-card">
-        <div class="chart-title">Levered IRR Sensitivity</div>
-        <div class="chart-subtitle">Rows: exit cap rate &middot; Columns: rental growth rate</div>
-        <div id="chart-heatmap" class="chart-wrap"></div>
+        <div class="chart-title">Net Operating Income</div>
+        <div class="chart-subtitle">Years 1&ndash;10 of the hold</div>
+        <div id="chart-noi" class="chart-wrap"></div>
       </div>
       <div class="chart-card">
-        <div class="chart-title">Levered NPV Sensitivity</div>
-        <div class="chart-subtitle">Rows: exit cap rate &middot; Columns: discount rate</div>
-        <div id="chart-heatmap-npv" class="chart-wrap"></div>
+        <div class="chart-title">Debt Service Coverage Ratio</div>
+        <div class="chart-subtitle">NOI &divide; total debt service, years 1&ndash;10</div>
+        <div id="chart-dscr" class="chart-wrap"></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Methodology -->
+<!-- Returns + Capital structure -->
 <section>
+  <div class="wrap grid-2">
+    <div>
+      <div class="section-kicker">Deal Metrics</div>
+      <h2 class="mt-0">Returns</h2>
+      <table class="overview-table">
+        <tr><td>Levered IRR</td><td>8.7%</td></tr>
+        <tr><td>Unlevered IRR</td><td>6.9%</td></tr>
+        <tr><td>Levered Equity Multiple</td><td>2.03x</td></tr>
+        <tr><td>Unlevered Equity Multiple</td><td>1.74x</td></tr>
+        <tr><td>Levered NPV</td><td class="neg">&minus;$254,484</td></tr>
+        <tr><td>Unlevered NPV</td><td class="neg">&minus;$1,311,783</td></tr>
+        <tr><td>Discount Rate</td><td>10.0%</td></tr>
+        <tr><td>Exit Sale Price (Year 10)</td><td>$8,006,380 at a 5.50% cap</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="section-kicker">Capital Structure</div>
+      <h2 class="mt-0">Sources &amp; Uses</h2>
+      <div class="card">
+        <div id="chart-capstack"></div>
+        <table class="compare-table" style="margin-top:12px;">
+          <tr><th>Sources</th><th></th></tr>
+          <tr><td>Bridge Loan (60% LTC)</td><td>$4,014,350</td></tr>
+          <tr><td>Equity (40%)</td><td>$2,676,233</td></tr>
+          <tr><th style="padding-top:18px;">Uses</th><th></th></tr>
+          <tr><td>Acquisition &amp; Closing Costs</td><td>$6,224,400</td></tr>
+          <tr><td>Renovation Costs</td><td>$426,040</td></tr>
+          <tr><td>Bridge Loan Fee</td><td>$40,144</td></tr>
+          <tr class="total"><td>Total Project Cost</td><td>$6,690,584</td></tr>
+        </table>
+        <p class="small" style="color:var(--ink-muted); margin:14px 0 0;">Bridge: 6.0% interest-only, 18 months. Refinance at Month 18: $4.14M permanent loan (70% LTV at a 6.0% cap), 5.0%, 35-year amortization.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sensitivity -->
+<section class="section-alt">
   <div class="wrap">
     <div class="section-head">
-      <div class="section-kicker">Methodology</div>
-      <h2>How the Model Is Built</h2>
+      <div class="section-kicker">Sensitivity Analysis</div>
+      <h2>Levered IRR Stress Tests</h2>
+      <p class="lead">Outlined cell = base case (8.7%). All four tables share one color scale, so the darker the cell, the higher the return. The discount rate is 10%.</p>
     </div>
-    <div class="grid-3" style="margin-bottom:24px;">
-      <div class="card">
-        <h4 style="font-family:system-ui, sans-serif; text-transform:uppercase; font-size:0.85rem; letter-spacing:0.05em; color:var(--sky-dark);">Unit &amp; Revenue Assumptions</h4>
-        <p class="small" style="color:var(--ink-secondary);">Unit-level rent roll by floor plan, current market rents from the brochure's own rent schedule, and a rooftop signage lease as the model's first itemized ancillary income line.</p>
+    <div class="grid-2">
+      <div class="chart-card">
+        <div class="chart-title">Exit Cap Rate vs. Purchase Price</div>
+        <div class="chart-subtitle">Rows: exit cap rate &middot; Columns: purchase price</div>
+        <div id="hm-price-exit" class="chart-wrap"></div>
       </div>
-      <div class="card">
-        <h4 style="font-family:system-ui, sans-serif; text-transform:uppercase; font-size:0.85rem; letter-spacing:0.05em; color:var(--sky-dark);">Debt &amp; Cash Flow</h4>
-        <p class="small" style="color:var(--ink-secondary);">Full monthly debt amortization schedule, operating expense assumptions (property tax, insurance, management fee, capex), and monthly-to-annual NOI and cash flow roll-ups.</p>
+      <div class="chart-card">
+        <div class="chart-title">Rental Growth Rate vs. Exit Cap Rate</div>
+        <div class="chart-subtitle">Rows: rental growth rate &middot; Columns: exit cap rate</div>
+        <div id="hm-growth-exit" class="chart-wrap"></div>
       </div>
-      <div class="card">
-        <h4 style="font-family:system-ui, sans-serif; text-transform:uppercase; font-size:0.85rem; letter-spacing:0.05em; color:var(--sky-dark);">Returns &amp; Risk</h4>
-        <p class="small" style="color:var(--ink-secondary);">Unlevered/levered IRR, NPV, and equity multiple, with a 9&times;9 two-way sensitivity grid on rent growth, discount rate, and exit cap rate.</p>
+      <div class="chart-card">
+        <div class="chart-title">Renovation Cost per sq. ft. vs. Rent Premium</div>
+        <div class="chart-subtitle">Rows: renovation cost per sq. ft. &middot; Columns: rent premium</div>
+        <div id="hm-reno-premium" class="chart-wrap"></div>
       </div>
-    </div>
-    <div class="source-note">
-      <span>&#9432;</span>
-      <span><strong>Market validation:</strong> the model's 5.0% exit cap rate assumption reflects a reduced cap rate from significant renovations and surrounding-area improvement, but is still held relatively high given the building's age and unresolved zoning question &mdash; broadly consistent with Colliers' Q2 2026 Canada Cap Rate Report range for Toronto multifamily.</span>
+      <div class="chart-card">
+        <div class="chart-title">Bridge Loan Interest Rate vs. Cap Rate at Refinance</div>
+        <div class="chart-subtitle">Rows: bridge loan interest rate &middot; Columns: cap rate at refinance</div>
+        <div id="hm-bridge-refi" class="chart-wrap"></div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- Key Assumptions -->
-<section id="assumptions" class="section-alt">
+<section id="assumptions">
   <div class="wrap">
     <div class="section-head">
-      <div class="section-kicker">Key Assumptions</div>
-      <h2>Every Input, Laid Out</h2>
+      <h2>Key Assumptions</h2>
     </div>
     <div class="assumption-grid">
       <div class="assumption-group">
-        <h4>Purchase Assumptions</h4>
+        <h4>Pricing &amp; Valuation</h4>
         <div class="assumption-row"><span class="k">Purchase Price</span><span class="v">$5,985,000</span></div>
         <div class="assumption-row"><span class="k">Purchase Date</span><span class="v">Sep 1, 2026</span></div>
-        <div class="assumption-row"><span class="k">Closing Costs</span><span class="v">4.0% ($239,400)<span class="note">As % of purchase price</span></span></div>
+        <div class="assumption-row"><span class="k">Closing Costs</span><span class="v">$239,400 (4.0%)</span></div>
         <div class="assumption-row"><span class="k">Total Purchase Price</span><span class="v">$6,224,400</span></div>
-        <div class="assumption-row"><span class="k">Average Price / Unit</span><span class="v">$444,600</span></div>
+        <div class="assumption-row"><span class="k">Price per Unit</span><span class="v">$444,600</span></div>
+        <div class="assumption-row"><span class="k">Price per Rentable sq. ft.</span><span class="v">$584</span></div>
       </div>
       <div class="assumption-group">
-        <h4>Renovation Assumptions</h4>
-        <div class="assumption-row"><span class="k">Initial Renovation Costs</span><span class="v">$400,000<span class="note">Significantly old building; last substantial renovation was 2016</span></span></div>
-        <div class="assumption-row"><span class="k">Renovation Period</span><span class="v">3 months</span></div>
-        <div class="assumption-row"><span class="k">Exit Renovation Costs</span><span class="v">$100,000<span class="note">Minimal exit renovation given a mid-term hold</span></span></div>
+        <h4>Renovation Plan</h4>
+        <div class="assumption-row"><span class="k">Renovation Cost</span><span class="v">$40 / sq. ft.</span></div>
+        <div class="assumption-row"><span class="k">Total Renovation Budget</span><span class="v">$426,040</span></div>
+        <div class="assumption-row"><span class="k">Renovation Period</span><span class="v">8 months (Oct 2026 &ndash; May 2027)</span></div>
+        <div class="assumption-row"><span class="k">Pace</span><span class="v">2 units / month as leases turn</span></div>
+        <div class="assumption-row"><span class="k">Rent Premium from Renovations</span><span class="v">7.0%</span></div>
       </div>
       <div class="assumption-group">
         <h4>Operating Assumptions</h4>
-        <div class="assumption-row"><span class="k">Rent Growth Rate</span><span class="v">3.0% / yr<span class="note">Current in-place rents run slightly above market; the model reverts them to market by Month 7, then grows from there</span></span></div>
-        <div class="assumption-row"><span class="k">Property Taxes</span><span class="v">$54,260 / yr<span class="note">Multi-residential rate on assumed 75%-of-price assessment</span></span></div>
-        <div class="assumption-row"><span class="k">Insurance</span><span class="v">$7,100 / yr<span class="note">~$500 per unit</span></span></div>
-        <div class="assumption-row"><span class="k">Property Manager Fee</span><span class="v">3.5% of monthly rent</span></div>
-        <div class="assumption-row"><span class="k">Vacancy Allowance</span><span class="v">4.0%<span class="note">~15 days vacant per year</span></span></div>
-        <div class="assumption-row"><span class="k">Discount Rate (NPV)</span><span class="v">7.0%<span class="note">Gov't bond yield + premium</span></span></div>
+        <div class="assumption-row"><span class="k">Rental Growth Rate</span><span class="v">2.5% / yr</span></div>
+        <div class="assumption-row"><span class="k">OpEx Inflation</span><span class="v">2.5% / yr</span></div>
+        <div class="assumption-row"><span class="k">Vacancy (stabilized)</span><span class="v">3.0%</span></div>
+        <div class="assumption-row"><span class="k">Property Management Fee</span><span class="v">3.5% of EGI</span></div>
+        <div class="assumption-row"><span class="k">Repairs &amp; Maintenance</span><span class="v">$800 / unit / yr</span></div>
+        <div class="assumption-row"><span class="k">Property Tax</span><span class="v">$54,314 / yr<span class="note">1.21% on an assessed value of 75% of price</span></span></div>
+        <div class="assumption-row"><span class="k">Insurance</span><span class="v">$1.50 / sq. ft.</span></div>
       </div>
       <div class="assumption-group">
-        <h4>Financing Assumptions</h4>
-        <div class="assumption-row"><span class="k">Equity</span><span class="v">$2,519,684 (35%)</span></div>
-        <div class="assumption-row"><span class="k">Loan Amount</span><span class="v">$4,724,400 (65%)</span></div>
-        <div class="assumption-row"><span class="k">Interest Rate</span><span class="v">5.5%<span class="note">Gov't bond + risk premium</span></span></div>
-        <div class="assumption-row"><span class="k">Amortization</span><span class="v">25 years, fully amortized</span></div>
+        <h4>Bridge Loan (Acquisition &amp; Renovation)</h4>
+        <div class="assumption-row"><span class="k">Loan-to-Cost</span><span class="v">60%</span></div>
+        <div class="assumption-row"><span class="k">Loan Principal</span><span class="v">$4,014,350</span></div>
+        <div class="assumption-row"><span class="k">Interest Rate</span><span class="v">6.0%, interest-only</span></div>
+        <div class="assumption-row"><span class="k">Loan Term</span><span class="v">18 months</span></div>
+        <div class="assumption-row"><span class="k">Issuance Fee</span><span class="v">1.0% of loan</span></div>
       </div>
       <div class="assumption-group">
-        <h4>Exit Assumptions</h4>
-        <div class="assumption-row"><span class="k">Hold Length</span><span class="v">15 years</span></div>
-        <div class="assumption-row"><span class="k">Exit Cap Rate</span><span class="v">5.0%<span class="note">Held high given age &amp; zoning uncertainty</span></span></div>
-        <div class="assumption-row"><span class="k">Sale Price at Exit</span><span class="v">$9,971,722</span></div>
-        <div class="assumption-row"><span class="k">Annual Appreciation Rate</span><span class="v">2.0%</span></div>
-        <div class="assumption-row"><span class="k">Cost of Sale</span><span class="v">5.0%</span></div>
+        <h4>Permanent Loan (Refinance)</h4>
+        <div class="assumption-row"><span class="k">Refinance Month</span><span class="v">Month 18</span></div>
+        <div class="assumption-row"><span class="k">Refinance LTV</span><span class="v">70%</span></div>
+        <div class="assumption-row"><span class="k">Stabilized Value at Refi</span><span class="v">$5,912,206 (6.0% cap)</span></div>
+        <div class="assumption-row"><span class="k">Loan Principal</span><span class="v">$4,138,544</span></div>
+        <div class="assumption-row"><span class="k">Interest Rate</span><span class="v">5.0%</span></div>
+        <div class="assumption-row"><span class="k">Amortization</span><span class="v">35 years</span></div>
+      </div>
+      <div class="assumption-group">
+        <h4>Exit</h4>
+        <div class="assumption-row"><span class="k">Length of Hold</span><span class="v">10 years</span></div>
+        <div class="assumption-row"><span class="k">Exit Cap Rate</span><span class="v">5.50%</span></div>
+        <div class="assumption-row"><span class="k">Sale Price at Exit</span><span class="v">$8,006,380</span></div>
+        <div class="assumption-row"><span class="k">Cost of Sale</span><span class="v">4.0%</span></div>
+        <div class="assumption-row"><span class="k">Implied Annual Appreciation</span><span class="v">2.95%</span></div>
+        <div class="assumption-row"><span class="k">Discount Rate</span><span class="v">10.0%</span></div>
       </div>
     </div>
   </div>
@@ -296,36 +371,22 @@
 <!-- Disclaimers -->
 <section class="section-alt">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-kicker">Fine Print</div>
-      <h2>Disclaimers</h2>
-    </div>
     <div class="card">
       <ul class="small text-muted" style="margin:0; padding-left:20px; line-height:1.7;">
-        <li style="margin-bottom:12px;">
-          <strong style="color:var(--ink-secondary);">Rent roll is documented but unverified:</strong> the source
-          brochure includes a unit-by-unit rent roll with current rents and unit details, but tenant names and
-          lease start/end dates aren't disclosed &mdash; so I can't independently confirm lease terms beyond
-          what's stated in the brochure.
-        </li>
-        <li style="margin-bottom:12px;">
-          <strong style="color:var(--ink-secondary);">Learning project, not professional work:</strong> this is an
-          independent exercise built to develop my real estate financial modelling skills. It is not investment advice,
-          a formal appraisal, or a professional work product, and shouldn't be relied on as one.
-        </li>
+        <li style="margin-bottom:10px;"><strong style="color:var(--ink-secondary);">Rent roll is documented but unverified:</strong> the brochure lists unit-level rents, but not tenant names or lease dates.</li>
+        <li><strong style="color:var(--ink-secondary);">Learning project, not professional work:</strong> an independent exercise to build my real estate modelling skills &mdash; not investment advice or a formal appraisal.</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- CTA / Downloads -->
+<!-- Downloads -->
 <section class="center">
   <div class="wrap">
-    <h2>Want to see the full model?</h2>
-    <p class="lead" style="margin:0 auto 24px;">Download the complete Excel workbook and the full investment memo &mdash; every assumption sheet, the debt schedule, and the standardized property read.</p>
+    <h2>See the Full Model</h2>
+    <p class="lead" style="margin:0 auto 24px;">Every assumption, the monthly P&amp;L, debt schedules, and the equity waterfall.</p>
     <div class="btn-row" style="justify-content:center;">
-      <a class="btn btn-primary" href="Dundas_St_W_Acquisition_Model.xlsm" download>Download Full Model (.xlsm)</a>
-      <a class="btn btn-primary" href="Dundas_St_W_Investment_Memo.docx" download>Download Investment Memo (.docx)</a>
+      <a class="btn btn-primary" href="2480_Dundas_St_W_v4.xlsm" download>Download Full Model (.xlsm)</a>
       <a class="btn btn-outline" href="mailto:ninja.chaipun@gmail.com">Ask Me About It</a>
     </div>
   </div>
@@ -340,80 +401,107 @@
 
 <script src="main.js"></script>
 <script>
-  const cashflowYears = Array.from({length: 14}, (_, i) => 'Y' + (i + 1));
-  const unlevered = [-78453,330953,341596,352572,363894,375571,387614,400035,412846,426058,439683,453736,468228,483173];
-  const levered =   [-319385,0,0,4429,15751,27428,39471,51892,64702,77914,91540,105592,120084,135030];
+  const years = Array.from({length: 10}, (_, i) => 'Y' + (i + 1));
 
-  drawLineChart('chart-cashflow', {
-    categories: cashflowYears,
-    yFormat: (v) => fmtMoney(v, {decimals: 1}),
-    series: [
-      { name: 'Unlevered', values: unlevered, color: '#2a78d6' },
-      { name: 'Levered', values: levered, color: '#eb6834' }
-    ]
+  drawColumnChart('chart-noi', {
+    categories: years,
+    values: [286144, 350216, 359249, 368512, 378013, 387758, 397751, 408001, 418513, 429294],
+    seriesName: 'NOI',
+    yMax: 480000,
+    yFormat: (v) => '$' + (v / 1e3).toFixed(0) + 'K',
+    tipFormat: (v) => '$' + Math.round(v).toLocaleString('en-US'),
+    color: '#2a78d6'
   });
 
-  drawHeatmap('chart-heatmap', {
-    rowLabels: ['3.00%','3.25%','3.50%','3.75%','4.00%','4.25%','4.50%','4.75%','5.00%'],
-    colLabels: ['2.00%','2.25%','2.50%','2.75%','3.00%','3.25%','3.50%','3.75%','4.00%'],
-    values: [
-      [0.0973,0.1022,0.1071,0.1118,0.1165,0.1211,0.1256,0.1301,0.1344],
-      [0.0904,0.0954,0.1004,0.1052,0.1100,0.1146,0.1192,0.1237,0.1282],
-      [0.0839,0.0890,0.0941,0.0990,0.1039,0.1086,0.1133,0.1178,0.1223],
-      [0.0778,0.0830,0.0882,0.0932,0.0982,0.1030,0.1077,0.1123,0.1169],
-      [0.0720,0.0774,0.0826,0.0878,0.0928,0.0977,0.1025,0.1072,0.1118],
-      [0.0665,0.0720,0.0774,0.0826,0.0877,0.0927,0.0976,0.1023,0.1071],
-      [0.0613,0.0669,0.0724,0.0777,0.0829,0.0880,0.0929,0.0978,0.1025],
-      [0.0563,0.0620,0.0676,0.0730,0.0783,0.0835,0.0885,0.0934,0.0983],
-      [0.0515,0.0573,0.0630,0.0686,0.0739,0.0792,0.0843,0.0893,0.0942]
-    ]
-  });
-
-  drawHeatmap('chart-heatmap-npv', {
-    rowLabels: ['4.00%','4.25%','4.50%','4.75%','5.00%','5.25%','5.50%','5.75%','6.00%'],
-    colLabels: ['6.00%','6.25%','6.50%','6.75%','7.00%','7.25%','7.50%','7.75%','8.00%'],
-    rowMetricLabel: 'Exit Cap',
-    colMetricLabel: 'Discount Rate',
-    metricLabel: 'Levered NPV',
-    colCaption: 'Discount Rate &rarr;',
-    formatValue: (v) => '$' + (v / 1e3).toFixed(0) + 'K',
-    formatCellLabel: (v) => (v / 1e3).toFixed(0) + 'K',
-    values: [
-      [1593.93,1445.47,1302.37,1164.44,1031.47,903.28,779.67,660.49,545.55],
-      [1302.08,1163.70,1030.31,901.74,777.79,658.28,543.05,431.93,324.76],
-      [1042.65,913.23,788.49,668.23,552.29,440.50,332.71,228.76,128.50],
-      [810.53,689.13,572.11,459.30,350.53,245.65,144.52,46.98,-47.10],
-      [601.62,487.44,377.38,271.26,168.95,70.29,-24.86,-116.62,-205.14],
-      [412.61,304.96,201.19,101.13,4.66,-88.38,-178.10,-264.64,-348.12],
-      [240.78,139.07,41.02,-53.53,-144.70,-232.62,-317.42,-399.21,-478.11],
-      [83.89,-12.39,-105.23,-194.74,-281.06,-364.32,-444.62,-522.07,-596.80],
-      [-59.92,-151.24,-239.28,-324.19,-406.07,-485.04,-561.21,-634.70,-705.59]
-    ].map(row => row.map(v => v * 1000))
-  });
-
-  drawBarChart('chart-units', {
-    data: [
-      { label: 'Studio — Small', value: 5, valueLabel: '5 units', detail: '338 sq. ft. · $1,699/mo' },
-      { label: 'Studio — Mid', value: 5, valueLabel: '5 units', detail: '618 sq. ft. · $2,480/mo' },
-      { label: 'Studio — Large', value: 4, valueLabel: '4 units', detail: '1,467 sq. ft. · $3,800/mo' }
-    ]
-  });
-
-  drawBarChart('chart-revenue', {
-    data: [
-      { label: 'Studio — Small', value: 101940, valueLabel: '$101.9K/yr', detail: '5 units · $1,699/mo each · $101,940/yr' },
-      { label: 'Studio — Mid', value: 148800, valueLabel: '$148.8K/yr', detail: '5 units · $2,480/mo each · $148,800/yr' },
-      { label: 'Studio — Large', value: 182400, valueLabel: '$182.4K/yr', detail: '4 units · $3,800/mo each · $182,400/yr' },
-      { label: 'Rooftop Signage', value: 6000, valueLabel: '$6.0K/yr', detail: '1 spot · $500/mo · $6,000/yr' }
-    ]
+  drawThresholdLine('chart-dscr', {
+    categories: years,
+    values: [1.28, 1.46, 1.45, 1.49, 1.53, 1.57, 1.61, 1.65, 1.69, 1.74],
+    seriesName: 'DSCR',
+    yMin: 1.0, yMax: 2.0, steps: 4,
+    yFormat: (v) => v.toFixed(2) + 'x',
+    labelFormat: (v) => v.toFixed(2) + 'x',
+    threshold: { value: 1.25, label: '1.25x lender minimum' },
+    color: '#2a78d6'
   });
 
   drawStackedBar('chart-capstack', {
     segments: [
-      { label: 'Equity', value: 2519684, color: '#2a78d6', detail: '$2.52M' },
-      { label: 'Debt', value: 4724400, color: '#eb6834', detail: '$4.72M' }
+      { label: 'Bridge Loan', value: 4014350, color: '#eb6834', detail: '$4.01M' },
+      { label: 'Equity', value: 2676233, color: '#2a78d6', detail: '$2.68M' }
     ]
   });
+
+  drawBarChart('chart-units', {
+    data: [
+      { label: 'Studio — Small', value: 5, valueLabel: '5 units', detail: 'Avg. 338 sq. ft. · market $1,699/mo' },
+      { label: 'Studio — Mid', value: 5, valueLabel: '5 units', detail: 'Avg. 618 sq. ft. · market $2,480/mo' },
+      { label: 'Studio — Large', value: 4, valueLabel: '4 units', detail: 'Avg. 1,467 sq. ft. · market $3,800/mo' }
+    ]
+  });
+
+  // Levered IRR sensitivity tables, values from the model's Deal Summary tab
+  const pct = (v) => (v * 100).toFixed(2) + '%';
+  const shared = { metricLabel: 'Levered IRR', domain: [0.025, 0.165], baseCell: [3, 3], formatValue: pct, formatCellLabel: pct, leftMargin: 56, minCell: 46 };
+
+  drawHeatmap('hm-price-exit', Object.assign({}, shared, {
+    rowLabels: ['5.05%','5.20%','5.35%','5.50%','5.65%','5.80%','5.95%'],
+    colLabels: ['$5.13M','$5.40M','$5.69M','$5.99M','$6.28M','$6.60M','$6.93M'],
+    rowMetricLabel: 'Exit cap', colMetricLabel: 'Purchase price', colCaption: 'Purchase Price →',
+    values: [
+      [0.1614,0.1393,0.1191,0.1005,0.0840,0.0685,0.0539],
+      [0.1569,0.1348,0.1145,0.0958,0.0792,0.0638,0.0492],
+      [0.1525,0.1303,0.1099,0.0912,0.0746,0.0591,0.0445],
+      [0.1482,0.1258,0.1054,0.0866,0.0700,0.0545,0.0399],
+      [0.1439,0.1215,0.1010,0.0822,0.0655,0.0499,0.0353],
+      [0.1397,0.1172,0.0966,0.0777,0.0611,0.0455,0.0308],
+      [0.1356,0.1130,0.0923,0.0734,0.0567,0.0410,0.0264]
+    ]
+  }));
+
+  drawHeatmap('hm-growth-exit', Object.assign({}, shared, {
+    rowLabels: ['2.20%','2.30%','2.40%','2.50%','2.60%','2.70%','2.80%'],
+    colLabels: ['5.05%','5.20%','5.35%','5.50%','5.65%','5.80%','5.95%'],
+    rowMetricLabel: 'Rental growth', colMetricLabel: 'Exit cap', colCaption: 'Exit Cap Rate →',
+    values: [
+      [0.0925,0.0877,0.0830,0.0783,0.0738,0.0692,0.0647],
+      [0.0952,0.0904,0.0857,0.0811,0.0766,0.0721,0.0676],
+      [0.0978,0.0931,0.0885,0.0839,0.0794,0.0749,0.0705],
+      [0.1005,0.0958,0.0912,0.0866,0.0822,0.0777,0.0734],
+      [0.1031,0.0984,0.0938,0.0893,0.0849,0.0805,0.0762],
+      [0.1057,0.1010,0.0965,0.0920,0.0876,0.0833,0.0790],
+      [0.1082,0.1036,0.0991,0.0947,0.0903,0.0860,0.0818]
+    ]
+  }));
+
+  drawHeatmap('hm-reno-premium', Object.assign({}, shared, {
+    rowLabels: ['$34','$36','$38','$40','$42','$44','$46'],
+    colLabels: ['6.25%','6.50%','6.75%','7.00%','7.25%','7.50%','7.75%'],
+    rowMetricLabel: 'Renovation cost / sq. ft.', colMetricLabel: 'Rent premium', colCaption: 'Rent Premium →',
+    values: [
+      [0.0869,0.0878,0.0888,0.0897,0.0906,0.0916,0.0925],
+      [0.0859,0.0868,0.0877,0.0887,0.0896,0.0906,0.0915],
+      [0.0848,0.0858,0.0867,0.0876,0.0886,0.0895,0.0905],
+      [0.0838,0.0848,0.0857,0.0866,0.0876,0.0885,0.0894],
+      [0.0828,0.0838,0.0847,0.0856,0.0865,0.0875,0.0884],
+      [0.0819,0.0828,0.0837,0.0846,0.0855,0.0865,0.0874],
+      [0.0809,0.0818,0.0827,0.0836,0.0845,0.0855,0.0864]
+    ]
+  }));
+
+  drawHeatmap('hm-bridge-refi', Object.assign({}, shared, {
+    rowLabels: ['5.55%','5.70%','5.85%','6.00%','6.15%','6.30%','6.45%'],
+    colLabels: ['5.25%','5.50%','5.75%','6.00%','6.25%','6.50%','6.75%'],
+    rowMetricLabel: 'Bridge rate', colMetricLabel: 'Refi cap', colCaption: 'Cap Rate at Refinance →',
+    values: [
+      [0.0937,0.0913,0.0894,0.0878,0.0864,0.0852,0.0842],
+      [0.0932,0.0909,0.0890,0.0874,0.0860,0.0849,0.0839],
+      [0.0928,0.0905,0.0886,0.0870,0.0857,0.0845,0.0835],
+      [0.0923,0.0900,0.0882,0.0866,0.0853,0.0842,0.0832],
+      [0.0919,0.0896,0.0878,0.0862,0.0849,0.0838,0.0828],
+      [0.0914,0.0892,0.0874,0.0859,0.0846,0.0835,0.0825],
+      [0.0910,0.0888,0.0870,0.0855,0.0842,0.0831,0.0822]
+    ]
+  }));
 </script>
 </body>
 </html>

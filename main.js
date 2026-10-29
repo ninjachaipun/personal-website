@@ -170,10 +170,16 @@ function drawHeatmap(containerId, opts) {
   container.innerHTML = '';
   container.style.position = 'relative';
 
-  const width = container.clientWidth || 560;
+  const availWidth = container.clientWidth || 560;
   const rowLabels = opts.rowLabels;
   const colLabels = opts.colLabels;
   const values = opts.values; // [row][col]
+  // optional minimum cell size: on narrow screens the grid keeps readable cells
+  // and the chart scrolls sideways inside its card instead of shrinking
+  const minCell = opts.minCell || 0;
+  const leftM = opts.leftMargin || 84;
+  const width = Math.max(availWidth, minCell ? leftM + 8 + minCell * colLabels.length : 0);
+  if (width > availWidth) container.style.overflowX = 'auto';
   const rowMetricLabel = opts.rowMetricLabel || 'Exit Cap';
   const colMetricLabel = opts.colMetricLabel || 'Rent Growth';
   const metricLabel = opts.metricLabel || 'Levered IRR';
@@ -193,7 +199,10 @@ function drawHeatmap(containerId, opts) {
   svg.appendChild(g);
 
   const flat = values.flat();
-  const vMin = Math.min(...flat), vMax = Math.max(...flat);
+  // optional shared domain so several heatmaps can be compared on one color scale
+  const vMin = opts.domain ? opts.domain[0] : Math.min(...flat);
+  const vMax = opts.domain ? opts.domain[1] : Math.max(...flat);
+  const base = opts.baseCell; // [row, col] of the base case, outlined
 
   const tipEl = document.createElement('div');
   tipEl.className = 'tooltip';
@@ -206,7 +215,7 @@ function drawHeatmap(containerId, opts) {
 
     colLabels.forEach((cl, ci) => {
       const v = values[ri][ci];
-      const t = (v - vMin) / (vMax - vMin);
+      const t = Math.max(0, Math.min(1, (v - vMin) / (vMax - vMin)));
       const rect = svgEl('rect', {
         x: ci * cellSize + cellGap / 2, y: ri * cellSize + cellGap / 2,
         width: cellSize - cellGap, height: cellSize - cellGap,
@@ -223,7 +232,7 @@ function drawHeatmap(containerId, opts) {
       // direct label on darker cells only if contrast requires — always show value, light text on dark, dark text on light
       const labelText = formatCellLabel(v);
       // shrink font for longer labels so they never overflow the cell, especially on narrow/mobile widths
-      const labelFontSize = labelText.length >= 6 ? Math.min(11, cellSize * 0.155) : Math.min(11, cellSize * 0.175);
+      const labelFontSize = labelText.length >= 6 ? Math.min(11, cellSize * 0.19) : Math.min(11, cellSize * 0.2);
       const label = svgEl('text', {
         x: ci * cellSize + cellSize / 2, y: ri * cellSize + cellSize / 2 + 4,
         class: 'value-label', 'text-anchor': 'middle',
@@ -233,6 +242,14 @@ function drawHeatmap(containerId, opts) {
       g.appendChild(label);
     });
   });
+
+  if (base) {
+    g.appendChild(svgEl('rect', {
+      x: base[1] * cellSize + 1, y: base[0] * cellSize + 1,
+      width: cellSize - 2, height: cellSize - 2, rx: 5,
+      fill: 'none', stroke: '#b08d57', 'stroke-width': 2.5, 'pointer-events': 'none'
+    }));
+  }
 
   colLabels.forEach((cl, ci) => {
     const t = svgEl('text', { x: ci * cellSize + cellSize / 2, y: gridH + 20, class: 'axis-label', 'text-anchor': 'middle' });
@@ -343,6 +360,139 @@ function drawStackedBar(containerId, opts) {
       g.appendChild(label);
     }
     x += segW;
+  });
+
+  container.appendChild(svg);
+  container.appendChild(tipEl);
+}
+
+/* =========================================================
+   Vertical column chart: one series over time, selective labels
+   ========================================================= */
+function drawColumnChart(containerId, opts) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  container.innerHTML = '';
+  container.style.position = 'relative';
+
+  const width = container.clientWidth || 560;
+  const height = opts.height || 220;
+  const margin = { top: 22, right: 8, bottom: 28, left: 52 };
+  const w = width - margin.left - margin.right;
+  const h = height - margin.top - margin.bottom;
+  const cats = opts.categories, vals = opts.values;
+  const fmt = opts.yFormat || ((v) => v);
+  const yMax = (opts.yMax || Math.max(...vals) * 1.1);
+
+  const svg = svgEl('svg', { width, height, viewBox: `0 0 ${width} ${height}`, class: 'viz-root' });
+  const g = svgEl('g', { transform: `translate(${margin.left},${margin.top})` });
+  svg.appendChild(g);
+  const y = v => h - (v / yMax) * h;
+
+  for (let i = 0; i <= 3; i++) {
+    const v = (i / 3) * yMax;
+    g.appendChild(svgEl('line', { x1: 0, x2: w, y1: y(v), y2: y(v), class: 'gridline' }));
+    const t = svgEl('text', { x: -8, y: y(v) + 4, class: 'axis-label', 'text-anchor': 'end' });
+    t.textContent = fmt(v);
+    g.appendChild(t);
+  }
+  g.appendChild(svgEl('line', { x1: 0, x2: w, y1: h, y2: h, class: 'hairline-axis' }));
+
+  const tipEl = document.createElement('div');
+  tipEl.className = 'tooltip';
+  const tooltip = makeTooltipOn(tipEl);
+  const band = w / cats.length;
+  const barW = Math.min(36, band * 0.62);
+  const labelIdx = opts.labelIndices || [0, vals.length - 1];
+
+  vals.forEach((v, i) => {
+    const cx = i * band + band / 2;
+    const bar = svgEl('rect', { x: cx - barW / 2, y: y(v), width: barW, height: h - y(v), rx: 4, fill: opts.color || '#2a78d6', class: 'bar-rect' });
+    g.appendChild(bar);
+    // hit target spans the full band so thin bars are easy to hover
+    const hit = svgEl('rect', { x: i * band, y: 0, width: band, height: h, fill: 'transparent' });
+    hit.addEventListener('mouseenter', () => tooltip.show(margin.left + cx, margin.top + y(v), `<strong>${cats[i]}</strong><br>${opts.seriesName || ''}: ${opts.tipFormat ? opts.tipFormat(v) : fmt(v)}`));
+    hit.addEventListener('mouseleave', () => tooltip.hide());
+    g.appendChild(hit);
+    const xl = svgEl('text', { x: cx, y: h + 18, class: 'axis-label', 'text-anchor': 'middle' });
+    xl.textContent = cats[i];
+    g.appendChild(xl);
+    if (labelIdx.includes(i)) {
+      const vl = svgEl('text', { x: cx, y: y(v) - 6, class: 'value-label', 'text-anchor': 'middle', 'font-weight': '700' });
+      vl.textContent = opts.labelFormat ? opts.labelFormat(v) : fmt(v);
+      g.appendChild(vl);
+    }
+  });
+
+  container.appendChild(svg);
+  container.appendChild(tipEl);
+}
+
+/* =========================================================
+   Single-series line with a dashed reference threshold
+   ========================================================= */
+function drawThresholdLine(containerId, opts) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  container.innerHTML = '';
+  container.style.position = 'relative';
+
+  const width = container.clientWidth || 560;
+  const height = opts.height || 220;
+  const margin = { top: 22, right: 16, bottom: 28, left: 52 };
+  const w = width - margin.left - margin.right;
+  const h = height - margin.top - margin.bottom;
+  const cats = opts.categories, vals = opts.values;
+  const fmt = opts.yFormat || ((v) => v);
+  const yMin = opts.yMin, yMax = opts.yMax;
+  const x = i => (cats.length === 1 ? w / 2 : (i + 0.5) * (w / cats.length));
+  const y = v => h - ((v - yMin) / (yMax - yMin)) * h;
+
+  const svg = svgEl('svg', { width, height, viewBox: `0 0 ${width} ${height}`, class: 'viz-root' });
+  const g = svgEl('g', { transform: `translate(${margin.left},${margin.top})` });
+  svg.appendChild(g);
+
+  const steps = opts.steps || 4;
+  for (let i = 0; i <= steps; i++) {
+    const v = yMin + (i / steps) * (yMax - yMin);
+    g.appendChild(svgEl('line', { x1: 0, x2: w, y1: y(v), y2: y(v), class: 'gridline' }));
+    const t = svgEl('text', { x: -8, y: y(v) + 4, class: 'axis-label', 'text-anchor': 'end' });
+    t.textContent = fmt(v);
+    g.appendChild(t);
+  }
+
+  if (opts.threshold) {
+    const ty = y(opts.threshold.value);
+    g.appendChild(svgEl('line', { x1: 0, x2: w, y1: ty, y2: ty, stroke: '#8a8f98', 'stroke-width': 1.5, 'stroke-dasharray': '5 4' }));
+    const tl = svgEl('text', { x: w, y: ty + 15, class: 'axis-label', 'text-anchor': 'end', 'font-weight': '600' });
+    tl.textContent = opts.threshold.label;
+    g.appendChild(tl);
+  }
+
+  let d = '';
+  vals.forEach((v, i) => { d += (i === 0 ? 'M' : 'L') + x(i) + ',' + y(v) + ' '; });
+  g.appendChild(svgEl('path', { d, fill: 'none', stroke: opts.color || '#2a78d6', 'stroke-width': 2 }));
+
+  const tipEl = document.createElement('div');
+  tipEl.className = 'tooltip';
+  const tooltip = makeTooltipOn(tipEl);
+  const labelIdx = opts.labelIndices || [0, vals.length - 1];
+  const band = w / cats.length;
+
+  vals.forEach((v, i) => {
+    g.appendChild(svgEl('circle', { cx: x(i), cy: y(v), r: 4, fill: opts.color || '#2a78d6', stroke: '#ffffff', 'stroke-width': 2 }));
+    const hit = svgEl('rect', { x: i * band, y: 0, width: band, height: h, fill: 'transparent' });
+    hit.addEventListener('mouseenter', () => tooltip.show(margin.left + x(i), margin.top + y(v), `<strong>${cats[i]}</strong><br>${opts.seriesName || ''}: ${fmt(v)}`));
+    hit.addEventListener('mouseleave', () => tooltip.hide());
+    g.appendChild(hit);
+    const xl = svgEl('text', { x: x(i), y: h + 18, class: 'axis-label', 'text-anchor': 'middle' });
+    xl.textContent = cats[i];
+    g.appendChild(xl);
+    if (labelIdx.includes(i)) {
+      const vl = svgEl('text', { x: x(i), y: y(v) - 10, class: 'value-label', 'text-anchor': 'middle', 'font-weight': '700' });
+      vl.textContent = opts.labelFormat ? opts.labelFormat(v) : fmt(v);
+      g.appendChild(vl);
+    }
   });
 
   container.appendChild(svg);
